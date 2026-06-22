@@ -1,0 +1,446 @@
+mixed-port: 7890
+ipv6: true
+allow-lan: true
+mode: rule
+log-level: info
+keepalive: 25
+keep-alive-idle: 10
+keep-alive-interval: 15
+unified-delay: false
+geo-auto-update: true
+geo-update-interval: 168
+external-controller: '127.0.0.1:9090'
+secret: 'Hpp@19921992'
+external-ui: ui
+# external-ui-url: 'https://github.com/haishanh/yacd/archive/gh-pages.zip'
+external-ui-url: 'https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip'
+external-controller-cors:
+  allow-origins: ['*']
+  allow-private-network: true
+profile:
+  store-selected: true
+  store-fake-ip: true
+hosts: {}
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  respect-rules: true
+  use-hosts: true
+  use-system-hosts: false
+  nameserver:
+    - 'https://1.1.1.1/dns-query'
+    - 'https://8.8.8.8/dns-query'
+    - 'https://dns.quad9.net/dns-query'
+  proxy-server-nameserver:
+    - '178.22.122.100' # شکن
+    - '185.51.200.2'   # شکن
+    - '10.202.10.10'   # رادار
+    - '10.202.10.11'   # رادار
+  nameserver-policy:
+    'domain:+.ir': [proxy-server-nameserver]
+    'all': [nameserver]
+  fallback-filter:
+  geoip: true
+  geoip-code: IR
+  ipcidr:
+    - '240.0.0.0/4'
+  geosite:
+    - 'cn'
+  domain:
+    - '+.ir'
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  strict-route: true
+  auto-detect-interface: true
+  dns-hijack:
+  - 'tcp://any:53'
+  - 'udp://any:53'
+  mtu: 1330
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080, 8880, 2052, 2082, 2086, 2095]
+    TLS:
+      ports: [443, 8443, 2053, 2083, 2087, 2096]
+    QUIC:
+      ports: [443, 8443]
+      
+proxies:
+  - name: "🇺🇸-hamedvpns"
+    type: hysteria2
+    server: 155.248.209.237
+    port: 33333
+    password: "bce6c821-200d-421f-bf3d-7159e5246ea0"
+    skip-cert-verify: true
+
+  - name: "🇩🇪-hamedvpns-hy2"
+    type: hysteria2
+    server: 130.61.50.75
+    port: 6443
+    password: "zhangyang"
+    sni: dash.cloudflare.com
+    skip-cert-verify: true
+
+  - name: "🇳🇱-@hamedvpns"
+    type: trojan
+    server: 198.202.211.1
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.gossipglove.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.gossipglove.com
+
+  - name: "🇳🇱-hamedvpns🙄"
+    type: trojan
+    server: 198.202.211.1
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.multiplydose.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.multiplydose.com
+
+  - name: "hamedvpns-3"
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.multiplydose.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.multiplydose.com
+
+  - name: "hamedvpns-4"
+    type: trojan
+    server: 104.19.230.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.multiplydose.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.multiplydose.com
+
+  - name: "🇵🇱-@hamedvpns🔥"
+    type: trojan
+    server: 198.202.211.1
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.creationlong.org
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.creationlong.org
+
+  - name: "🇵🇱-@hamedvpns😉"
+    type: trojan
+    server: 104.19.230.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.creationlong.org
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.creationlong.org
+
+  - name: "🇵🇱-@hamedvpns👑"
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.creationlong.org
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.creationlong.org
+
+  - name: "🇫🇷-hamedvpns⚡"
+    type: trojan
+    server: 198.202.211.1
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.ignitelimit.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.ignitelimit.com
+
+  - name: "hamedvpns-5"
+    type: trojan
+    server: 104.19.230.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.ignitelimit.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.ignitelimit.com
+
+  - name: "hamedvpns-6"
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.ignitelimit.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.ignitelimit.com
+
+  - name: "🇫🇷-hamedvpns"
+    type: trojan
+    server: 198.202.211.1
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.calmloud.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.calmloud.com
+
+  - name: "1-hamedvpns"
+    type: trojan
+    server: 104.19.229.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.calmloud.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.calmloud.com
+
+  - name: "2-hamedvpns"
+    type: trojan
+    server: 104.19.230.21
+    port: 443
+    password: humanity
+    network: ws
+    sni: www.calmloud.com
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: "/assignment"
+      headers:
+        Host: www.calmloud.com
+
+  - name: "🇳🇱-hamedp71-(WS)"
+    type: vless
+    server: 45.130.125.126
+    port: 2053
+    uuid: 04e28e6c-7a6c-4ec7-bed2-3da8f7c9edce
+    network: ws
+    tls: true
+    servername: BpB-expO--10RaYly4zY.EXPO.App
+    client-fingerprint: chrome
+    skip-cert-verify: false
+    udp: true
+    alpn:
+      - http/1.1
+    ws-opts:
+      path: "/eyJqdW5rIjoiTG1BbkpIVHV2S21jNjRNIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMTQ2LjEwMy4xMTMuMTU4Il19?ed"
+      headers:
+        Host: bpb-expo--10rayly4zy.expo.app
+
+  - name: "🇷🇺-hamedp71-(Reality)"
+    type: vless
+    server: ru.faygo.bot
+    port: 443
+    uuid: 8ca5cbd3-ec16-4728-bedc-2bc0d82f0922
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: enterprisekitten.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+      short-id: 6ba85179e30d4fc2
+
+#warp
+#Arista
+#Rayan
+#BPB
+#Game
+
+proxy-groups:
+  - name: "💚خانه"
+    type: select
+    proxies: 
+      - "اتصال❤️خودکار"   
+      - "🇩🇪-hamedvpns-hy2"
+      - "🇺🇸-hamedvpns"
+      - "🇳🇱-@hamedvpns"
+      - "🇫🇷-hamedvpns⚡"
+      - "🇫🇷-hamedvpns"
+      - "🇳🇱-hamedvpns🙄"
+      - "🇵🇱-@hamedvpns🔥"
+      - "🇵🇱-@hamedvpns😉"
+      - "🇵🇱-@hamedvpns👑"
+      - "1-hamedvpns"
+      - "2-hamedvpns"
+      - "hamedvpns-3"
+      - "hamedvpns-4"
+      - "hamedvpns-5"
+      - "hamedvpns-6"
+      - "🇳🇱-hamedp71-(WS)"
+      - "🇷🇺-hamedp71-(Reality)"
+      
+  - name: "اتصال❤️خودکار"
+    type: url-test
+    url: "http://www.google.com/generate_204"
+    interval: 120
+    tolerance: 100
+    proxies:
+      - "🇩🇪-hamedvpns-hy2"
+      - "🇺🇸-hamedvpns"
+      - "🇳🇱-@hamedvpns"
+      - "🇫🇷-hamedvpns⚡"
+      - "🇫🇷-hamedvpns"
+      - "🇳🇱-hamedvpns🙄"
+      - "🇵🇱-@hamedvpns🔥"
+      - "🇵🇱-@hamedvpns😉"
+      - "🇵🇱-@hamedvpns👑"
+      - "1-hamedvpns"
+      - "2-hamedvpns"
+      - "hamedvpns-3"
+      - "hamedvpns-4"
+      - "hamedvpns-5"
+      - "hamedvpns-6"
+      - "🇳🇱-hamedp71-(WS)"
+      - "🇷🇺-hamedp71-(Reality)"
+
+rule-providers:
+  malware:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/malware.txt"
+    path: "./ruleset/malware.txt"
+    interval: 86400
+  malware-cidr:
+    type: http
+    format: text
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/malware-ip.txt"
+    path: "./ruleset/malware-cidr.txt"
+    interval: 86400
+  phishing:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/phishing.txt"
+    path: "./ruleset/phishing.txt"
+    interval: 86400
+  phishing-cidr:
+    type: http
+    format: text
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/phishing-ip.txt"
+    path: "./ruleset/phishing-cidr.txt"
+    interval: 86400
+  cryptominers:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/cryptominers.txt"
+    path: "./ruleset/cryptominers.txt"
+    interval: 86400
+  category-ads-all:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/category-ads-all.txt"
+    path: "./ruleset/category-ads-all.txt"
+    interval: 86400
+  ir:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/ir.txt"
+    path: "./ruleset/ir.txt"
+    interval: 86400
+  ir-cidr:
+    type: http
+    format: text
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/ircidr.txt"
+    path: "./ruleset/ir-cidr.txt"
+    interval: 86400
+
+rules:
+  - RULE-SET,malware,REJECT
+  - RULE-SET,phishing,REJECT
+  - RULE-SET,cryptominers,REJECT
+  - RULE-SET,category-ads-all,REJECT
+  - RULE-SET,malware-cidr,REJECT
+  - RULE-SET,phishing-cidr,REJECT
+  - GEOIP,IR,DIRECT
+  - RULE-SET,ir,DIRECT
+  - RULE-SET,ir-cidr,DIRECT
+  - MATCH,💚خانه
+
+ntp:
+  enable: true
+  server: time.cloudflare.com
+  port: 123
+  interval: 30
